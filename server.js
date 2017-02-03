@@ -7,7 +7,6 @@ var http = require('http');
 const fs = require('fs');
 const app = express();
 
-var java = require('java');
 var spawn = require('child_process').spawn;
 
 var javaLangSystem = java.import('java.lang.System');
@@ -43,10 +42,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.get('/', function(req, res) {
 
 
-    // var childee = require('child_process').spawn('cd', ['views/audio']);
-    var childee = require('child_process').spawn('./run.sh');
-
-    var childee = require('child_process').spawn('mv', ['a.pdf', 'views/audio/a.pdf']);
   res.render('index'); 
 });
 
@@ -56,22 +51,7 @@ app.get('/submit', function(req, res) {
     name = req.body.name; 
 
         var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for( var i=0; i < 9; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    var path = " views/audio/" + text + ".txt";
-    var items = ["G", "A", "GF", "AF"];
-    var instruments = ["clarinet", "trumpet", "piano", "alto_sax"];
-    var pitch = items[Math.floor(Math.random()*items.length)];
-    var instrument = items[Math.floor(Math.random()*items.length)];
-    var child = require('child_process').spawn(
-    'java', ['-jar', 'Jaizz.jar', pitch, instrument, 'short', 'a']
-    );
-    var childee = require('child_process').spawn('./run.sh');
-
-    var childee = require('child_process').spawn('mv', ['a.pdf', 'views/audio/a.pdf']);
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012";
     res.redirect('/');
 
 });
