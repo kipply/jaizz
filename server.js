@@ -29,7 +29,7 @@ var cmd    = require('child_process').spawn('java', ['Main']);
   //   console.log('listening for http on 80'); 
   // }); 
     //UNCOMMENT THIS FOR LOCAL 30000
-   app.listen(80, function(){
+   app.listen(8000, function(){
      console.log('listening on 3000'); 
    }); 
 
